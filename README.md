@@ -1,2 +1,2 @@
 # pia-deluge
-PIA OpenVPN and Deluge
+Docker, PIA, OpenVPN and Deluge
