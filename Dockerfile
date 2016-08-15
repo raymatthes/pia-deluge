@@ -32,9 +32,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
 # configure vpn
 #
 RUN mkdir /root/openvpn
-COPY src/pia/openvpn/2016-07-10-openvpn.zip /root/openvpn/2016-07-10-openvpn.zip
+COPY src/pia/openvpn/2016-07-10/openvpn.zip /root/openvpn/openvpn.zip
 WORKDIR "/etc/openvpn"
-RUN unzip /root/openvpn/2016-07-10-openvpn.zip
+RUN unzip /root/openvpn/openvpn.zip
 RUN cp CA\ Toronto.ovpn pia-ca-toronto.conf
 RUN sed -i 's/auth-user-pass/auth-user-pass login.conf/' pia-ca-toronto.conf
 RUN touch login.conf
