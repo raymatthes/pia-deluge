@@ -8,8 +8,8 @@ docker run \
        --rm \
        --cap-add=NET_ADMIN \
        --device=/dev/net/tun \
-       --env PIA_USERNAME=${PIA_USERNAME} \
-       --env PIA_PASSWORD=${PIA_PASSWORD} \
+       --env "PIA_USERNAME=${PIA_USERNAME}" \
+       --env "PIA_PASSWORD=${PIA_PASSWORD}" \
        -it \
        -v ${TORRENTS}:/root/Downloads \
        ${IMAGE_TAG} \

@@ -4,17 +4,18 @@
 #
 FROM ubuntu:16.04
 MAINTAINER Ray Matthes<ray.matthes@gmail.com>
+ARG TZ
+ARG PIA_CONFIG
+ARG PIA_CONFIG_VERSION
+ENV TZ=${TZ}
+ENV PIA_CONFIG=${PIA_CONFIG}
+ENV PIA_CONFIG_VERSION=${PIA_CONFIG_VERSION}
 WORKDIR "/root"
+
 #
 # fix timezone
 #
-ENV TZ=America/Denver
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-#
-# scripts
-#
-COPY src/bin/*.sh ./
-RUN chmod +x *.sh 
+RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
 #
 # install
@@ -29,21 +30,26 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 #
-# configure vpn
+# copy src and make scripts executable
 #
-RUN mkdir /root/openvpn
-COPY src/pia/openvpn/2016-07-10/openvpn.zip /root/openvpn/openvpn.zip
-WORKDIR "/etc/openvpn"
-RUN unzip /root/openvpn/openvpn.zip
-RUN cp CA\ Toronto.ovpn pia-ca-toronto.conf
-RUN sed -i 's/auth-user-pass/auth-user-pass login.conf/' pia-ca-toronto.conf
-RUN touch login.conf
-RUN chmod 400 login.conf
-RUN echo 'AUTOSTART="pia-ca-toronto"' >> /etc/default/openvpn
+WORKDIR "/root"
+COPY src src
+RUN chmod +x src/bin/*.sh
+RUN echo 'export PATH="$PATH:$HOME/src/bin"' >> /root/.bashrc
+RUN echo "alias dc='deluge-console'" >> /root/.bash_aliases
+RUN echo "alias go='source run-all.sh'" >> /root/.bash_aliases
 
 #
-# configure deluge
+# configure vpn
+#  put a copy of https://www.privateinternetaccess.com/openvpn/openvpn.zip in src/pia/openvpn/${PIA_CONFIG_VERSION}
 #
+WORKDIR "/etc/openvpn"
+RUN unzip /root/src/pia/openvpn/${PIA_CONFIG_VERSION}/openvpn.zip
+RUN cp "${PIA_CONFIG}.ovpn" pia.conf
+RUN sed -i 's/auth-user-pass/auth-user-pass login.conf/' pia.conf
+RUN touch login.conf
+RUN chmod 400 login.conf
+RUN echo 'AUTOSTART="pia"' >> /etc/default/openvpn
 
 # cleanup
 WORKDIR "/root"

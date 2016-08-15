@@ -1,7 +1,15 @@
 # set environment variables
 
+export TZ="America/Denver"
+
+export PIA_CONFIG="CA Toronto"
+export PIA_CONFIG_VERSION="2016-07-10"
+
+echo "Using PIA config: '${PIA_CONFIG}'"
+echo "Using PIA version: '${PIA_CONFIG_VERSION}'"
+
 export IMAGE_TAG="ray/pia-deluge:1.0"
-export CONTAINER_NAME=agassi
+export CONTAINER_NAME=pia-deluge
 export TORRENTS=${HOME}/media-sg/media/torrents
 
 export PIA_USERNAME="$(cat ${HOME}/secrets/pia_username.txt)"
