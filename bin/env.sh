@@ -3,7 +3,7 @@
 export TZ="America/Denver"
 
 export PIA_CONFIG="CA Toronto"
-export PIA_CONFIG_VERSION="2016-07-10"
+export PIA_CONFIG_VERSION="ovpn-2016-07-16_07-42-default"
 
 echo "Using PIA config: '${PIA_CONFIG}'"
 echo "Using PIA version: '${PIA_CONFIG_VERSION}'"
