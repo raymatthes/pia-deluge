@@ -10,5 +10,4 @@ and then update bin/env.sh.
 ```
 export PIA_CONFIG_VERSION="2017-02-06"
 ```
-
 reference: https://www.privateinternetaccess.com/pages/client-support/
