@@ -41,10 +41,10 @@ RUN echo "alias go='source run-all.sh'" >> /root/.bash_aliases
 
 #
 # configure vpn
-#  put a copy of https://www.privateinternetaccess.com/openvpn/openvpn.zip in src/pia/openvpn/${PIA_CONFIG_VERSION}
+#  put a copy of https://www.privateinternetaccess.com/openvpn/openvpn-strong-tcp.zip in src/pia/openvpn/${PIA_CONFIG_VERSION}
 #
 WORKDIR "/etc/openvpn"
-RUN unzip /root/src/pia/openvpn/${PIA_CONFIG_VERSION}/openvpn.zip
+RUN unzip /root/src/pia/openvpn/${PIA_CONFIG_VERSION}/openvpn-strong-tcp.zip
 RUN cp "${PIA_CONFIG}.ovpn" pia.conf
 RUN sed -i 's/auth-user-pass/auth-user-pass login.conf/' pia.conf
 RUN touch login.conf
