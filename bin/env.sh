@@ -3,10 +3,12 @@
 export TZ="America/Denver"
 
 export PIA_CONFIG="CA Toronto"
-export PIA_CONFIG_VERSION="openvpn-strong-2018-07-16"
+export PIA_CONFIG_VERSION="openvpn-strong-tcp-2019-04-05"
+export PIA_ZIP_FILE="openvpn-strong-tcp.zip"
 
 echo "Using PIA config: '${PIA_CONFIG}'"
 echo "Using PIA version: '${PIA_CONFIG_VERSION}'"
+echo "Using PIA zip file: '${PIA_ZIP_FILE}'"
 
 export IMAGE_TAG="ray/pia-deluge:1.0"
 export CONTAINER_NAME=pia-deluge

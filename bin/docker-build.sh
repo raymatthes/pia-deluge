@@ -8,5 +8,6 @@ docker build \
        --build-arg "TZ=${TZ}" \
        --build-arg "PIA_CONFIG=${PIA_CONFIG}" \
        --build-arg "PIA_CONFIG_VERSION=${PIA_CONFIG_VERSION}" \
+       --build-arg "PIA_ZIP_FILE=${PIA_ZIP_FILE}" \
        .
 
