@@ -2,8 +2,8 @@
 
 export TZ="America/Denver"
 
-export PIA_CONFIG="CA Toronto"
-export PIA_CONFIG_VERSION="openvpn-strong-tcp-2019-04-05"
+export PIA_CONFIG="ca_toronto"
+export PIA_CONFIG_VERSION="openvpn-strong-tcp-2021-01-10"
 export PIA_ZIP_FILE="openvpn-strong-tcp.zip"
 
 echo "Using PIA config: '${PIA_CONFIG}'"
