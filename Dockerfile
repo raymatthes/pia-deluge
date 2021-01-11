@@ -28,6 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     unzip wget \
     net-tools \
     curl \
+    jq \
     deluged deluge-console deluge-web \
  && rm -rf /var/lib/apt/lists/*
 

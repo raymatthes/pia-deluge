@@ -12,6 +12,6 @@ deluge-console "config --set dht false;"
 deluge-console "config --set lsd false;"
 deluge-console "config --set natpmp false;"
 
-deluge-console "config --set listen_ports (${PIA_PORT}, ${PIA_PORT});"
+#deluge-console "config --set listen_ports (${PIA_PORT}, ${PIA_PORT});"
 deluge-console "config --set listen_interface ${PIA_IP};"
 
